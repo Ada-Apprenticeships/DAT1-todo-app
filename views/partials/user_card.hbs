@@ -1,0 +1,16 @@
+<section class="user-card">
+  <h2>{{user}}'s todos</h2>
+  <p>Email: {{email}}</p>
+  <p>Todo list</p>
+  <ul>
+    {{#unless todos.length}}
+      <a href="/add_todo">Start adding todos...</a>
+    {{/unless}}
+    {{#each todos}}
+      <li class="{{ternary this.is_complete 'is-complete todo' 'todo'}}">
+        <p>{{this.content}}</p>
+        <a href="/edit_todo?id={{this.id}}"><img src="../assets/pencil-line.svg" alt="triangle with all three sides equal" height="15" width="20" /></a>
+      </li>
+    {{/each}}
+  </ul>
+</section>

@@ -1,0 +1,15 @@
+<h2>Remove user</h2>
+<form action="/remove_user" method="post">
+  <div>
+    <label for="email">Email:</label>
+    <input list="emails" type="text" id="email" name="email" />
+  </div>
+  <datalist id="emails">
+    {{#each users}}
+      <option value="{{this.email_address}}"></option>
+    {{/each}}
+  </datalist>
+  <button type="submit">Remove User</button>
+</form>
+
+<a href="/">Home Page</a>

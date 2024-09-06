@@ -1,0 +1,33 @@
+<h1>Stats page</h1>
+
+<a href="/">Return to home page</a>
+
+<p>Total users: {{totalUsers}}</p>
+<p>Total todos: {{totalTodos}}</p>
+<p>User with most todos: {{emailOfMaxTodos}}</p>
+<p>User with least todos: {{emailOfMinTodos}}</p>
+<p>Average number of todos per user: {{avgTodosPerUser}}</p>
+
+<h2>Todos per user</h2>
+<div class="chart-container" style="width: 50%; height: 40%;">
+  <canvas id="todos-per-user"></canvas>
+</div>
+
+<h2>Todos per priority</h2>
+<div class="chart-container" style="width: 50%; height: 30%;">
+  <canvas id="todos-per-priority"></canvas>
+</div>
+
+<script>
+  const ctx = document.getElementById('todos-per-user').getContext('2d'); new Chart(ctx, { type: 'bar', data: { labels:
+  {{{todosPerUser}}}.labels, datasets: [{ label: 'todos', data:
+  {{{todosPerUser}}}.values, backgroundColor: 'rgba(75, 192, 192, 0.6)', borderColor: 'rgba(75, 192, 192, 1)', borderWidth: 1 }] }, options: { title: { display: true, text: 'todos per user' },
+  responsive: true, plugins: { title: { display: true, text: 'Todo By User' } } , scales: { y: { beginAtZero: true } } }, });
+</script>
+
+<script>
+  const ctx2 = document.getElementById('todos-per-priority').getContext('2d'); new Chart(ctx2, { type: 'bar', data: { labels:
+  {{{todosPerPriority}}}.labels, datasets:
+  {{{todosPerPriority}}}.datasets }, options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true, }, y: { stacked: true, beginAtZero: true, ticks: { stepSize: 1 } } },
+  plugins: { title: { display: true, text: 'Todo Priorities by User' } } } });
+</script>

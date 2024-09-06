@@ -1,0 +1,10 @@
+<form action="edit_todo" method="post">
+  {{#each todos}}
+    <div>
+      <input type="radio" name="todo_id" value="{{this.todo_id}}" />
+      <label for="{{this.todo_id}}">{{this.title}} - {{this.content}}</label>
+    </div>
+  {{/each}}
+  <input type="submit" value="Edit" />
+</form>
+<a href="/">Home Page</a>

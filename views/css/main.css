@@ -1,0 +1,120 @@
+body {
+  font-size: 10pt;
+
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+  color: black;
+
+  line-height: 14pt;
+
+  padding-left: 5pt;
+
+  padding-right: 5pt;
+
+  padding-top: 5pt;
+}
+
+h1 {
+  font:
+    20pt Verdana,
+    Geneva,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-weight: bold;
+
+  line-height: 20pt;
+}
+
+p.subheader {
+  font-weight: bold;
+
+  color: #593d87;
+}
+
+img {
+  padding: 3pt;
+
+  float: right;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: #8094d6;
+}
+
+a:hover,
+a:active {
+  color: #ff9933;
+}
+
+div.footer {
+  font-size: 9pt;
+
+  font-style: italic;
+
+  line-height: 12pt;
+
+  text-align: center;
+
+  padding-top: 30pt;
+}
+
+.user-card {
+  padding: 2em;
+  box-shadow: floralwhite;
+  border: 1px solid black;
+  margin-right: 1em;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.is-complete {
+  text-decoration: line-through;
+}
+
+.todo > * {
+  display: inline;
+}
+
+.todo {
+  background-color: lightcyan;
+  border-radius: 5px;
+}
+
+li.todo {
+  margin-bottom: 1em;
+  border: 1px solid green;
+  padding: 0.5em;
+}
+
+li.todo > img {
+  margin-bottom: 1em;
+}
+
+form > * {
+  display: block;
+  margin-bottom: 20px;
+}
+
+nav a {
+  background-color: aliceblue;
+  margin-left: 1em;
+  border-radius: 5px;
+}
+
+nav {
+  margin-bottom: 1em;
+}
+
+label {
+  display: inline;
+}

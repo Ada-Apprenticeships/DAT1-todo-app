@@ -1,0 +1,24 @@
+<form action="post_edit_todo" method="post">
+
+  <input type="hidden" name="todo_id" value="{{todo.id}}" />
+
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" value="{{todo.title}}" />
+
+  <label for="content">Content:</label>
+  <input type="text" id="content" name="content" value="{{todo.content}}" />
+
+  <label for="priority">Priority:</label>
+  <select id="priority" name="priority">
+    <option value="U">Urgent</option>
+    <option value="H">High</option>
+    <option value="M">Medium</option>
+    <option value="L">Low</option>
+  </select>
+
+  <input type="checkbox" id="is_complete" name="is_complete" {{isChecked todo.is_complete}} value="on" />
+  <label for="is_complete">Is complete?</label>
+
+  <button type="submit">Submit</button>
+</form>
+<a href="/">Home Page</a>

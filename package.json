@@ -1,0 +1,30 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "The purpose of this exercise is to test your knowledge of SQL and your ability to use it with your programming language.",
+  "main": "index.js",
+  "scripts": {
+    "init:db" : "node initialise.js",
+    "teardown:db": "rm todo.sqlite",
+    "setup:db": "npm run teardown:db; npm run init:db",
+    "listen": "nodemon listen.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "node-fetch": "^3.2.6",
+    "prettier": "^3.3.3",
+    "sqlite": "^4.2.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4"
+  }
+}

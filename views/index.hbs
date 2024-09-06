@@ -1,0 +1,22 @@
+<h2>Todo app</h2>
+
+<nav>
+  <a href="/user_signup">User Signup</a>
+  <a href="/remove_user">Remove User</a>
+  <a href="/add_todo">Add Todo</a>
+  <a href="/stats">View stats dashboard</a>
+</nav>
+
+<h3>All usernames:</h3>
+<div>
+  {{#each allUsers}}
+    <p>{{this.first_name}}</p>
+  {{/each}}
+</div>
+
+<h3>All user todo lists:</h3>
+<div class="user-container">
+  {{#each users}}
+    {{> user_card this}}
+  {{/each}}
+</div>
