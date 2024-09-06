@@ -215,7 +215,41 @@ For example, to run the file `setup.sql` located in `part-1`. You can:
 
 ## 🖼️ Part 2: Integration with the Todo list UI
 
-In this project, we're building a Todo list UI that enables users to view a list of their todos. Through the UI, users can add more todos, edit existing ones, sign up new users and view a stats page that shows information like the total number of todos per each user. In this part, you will integrate the SQL queries you developed in Part 1 into the Todo List application so the frontend can read and update the database.
+In this project, we're building a Todo list UI that enables users to view a list of their todos. Through the UI, users can add more todos, edit existing ones, sign up new users and view a stats page that shows information like the total number of todos per each user. In this part, you will integrate the SQL queries you developed in Part 1 into the Todo List application so the frontend can communicate with the database.
+
+
+### 📦 Install the project dependencies
+
+
+You will need to install some libraries for your todo app project to work. Start by opening a terminal and then run the following command to install your dependencies:
+
+```terminal
+npm install
+```
+
+Then check the installation worked:
+
+```terminal
+npm ls
+```
+
+This should print something like the following to your terminal:
+
+```terminal
+nodejs@1.0.0 /workspaces/DAT1-todo-app
+├── @types/node@18.19.43
+├── body-parser@1.20.2
+├── express-handlebars@6.0.7
+├── express-session@1.18.0
+├── express@4.19.2
+├── jest@29.7.0
+├── node-fetch@3.3.2
+├── nodemon@3.1.4
+├── prettier@3.3.3
+├── sqlite@4.2.1
+└── sqlite3@5.1.7
+
+```
 
 ### Viewing the Todo List UI
 
