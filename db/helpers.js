@@ -18,6 +18,15 @@ class SQL {
     return result;
   };
 
+  fetchUsersAndTodos = async () => {
+    const result = await this.db.all(
+      `
+
+      `,
+    );
+    return result;
+  };
+
   fetchTodoById = async (todoId) => {
     const result = await this.db.get(
       `
@@ -27,23 +36,6 @@ class SQL {
     return result;
   };
 
-  returnTodoByEmail = async (emailAddress) => {
-    const result = await this.db.get(
-      `
-
-      `,
-    );
-    return result;
-  };
-
-  fetchUsersAndTodos = async () => {
-    const result = await this.db.all(
-      `
-
-      `,
-    );
-    return result;
-  };
 
   insertUser = async ({ emailAddress, firstName, lastName, notificationInd }) => {
     await this.db.get(
