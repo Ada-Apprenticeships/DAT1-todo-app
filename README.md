@@ -180,23 +180,23 @@ When testing these queries, make sure the output matches the described format. T
 To run any `.sql` file with `sqlite3`, you can:
 
 1. Change into the directory where the file is located.
-1. Double check your `.sql` file opens a database using the `.open` statement.
-1. Open a terminal and use the `sqlite3` command-line tool:
+2. Double check your `.sql` file opens a database using the `.open` statement.
+3. Open a terminal and use the `sqlite3` command-line tool:
    ```terminal
    sqlite3 < <name-of-file>.sql
    ```
-1. Check the query output when you run the command
+4. Check the query output when you run the command
 
 For example, to run the file `setup.sql` located in `part-1`. You can:
 
 1. Change directory into the `part-1` directory
-1. Open a terminal and run the following command:
+2. Open a terminal and run the following command:
 
 ```terminal
   sqlite3 < setup.sql
 ```
 
-1. Check the query output when you run the command
+3. Check the query output when you run the command
 
 ## 🖼️ Part 2: Integration with the Todo list UI
 
