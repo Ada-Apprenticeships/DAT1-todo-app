@@ -45,8 +45,8 @@ const app = express();
   // HOME PAGE
 
   app.get("/", async (req, res) => {
-    let allUsers = await wrapTryCatch(sql.returnAllUsers, null, [])();
-    let users = await wrapTryCatch(sql.returnUsersAndTodos, null, [])();
+    let allUsers = await wrapTryCatch(sql.fetchUsers, null, [])();
+    let users = await wrapTryCatch(sql.fetchUsersAndTodos, null, [])();
 
     res.render("index", { allUsers, users: groupUsers(users) });
   });
@@ -66,14 +66,14 @@ const app = express();
   // EDIT TODO
 
   app.get("/edit_todo", async (req, res) => {
-    let todo = await wrapTryCatch(sql.returnTodoById, req.query.id);
+    let todo = await wrapTryCatch(sql.fetchTodoById, req.query.id);
 
     res.render("edit_todo", { todo });
   });
 
   app.post("/edit_todo", async (req, res) => {
     let todo_id = req.body.todo_id;
-    let todo = await sql.returnTodoById(todo_id);
+    let todo = await sql.fetchTodoById(todo_id);
     res.render("edit_todo", { todo });
   });
 
@@ -87,7 +87,7 @@ const app = express();
     let isComplete = req.body.is_complete;
     isComplete = isComplete === "on" ? "1" : "0";
 
-    wrapTryCatch(sql.updateTodo, { title, content, priority, todoId, isComplete }).catch((errr) => {
+    wrapTryCatch(sql.updateTodo, { title, content, priority, todoId, isComplete }).catch((err) => {
       console.log(err);
     });
 
@@ -118,7 +118,7 @@ const app = express();
   // ADD TODO
 
   app.get("/add_todo", async (req, res) => {
-    let users = await wrapTryCatch(sql.returnAllUsers, null, [])();
+    let users = await wrapTryCatch(sql.fetchUsers, null, [])();
 
     res.render("add_todo", {
       users,
@@ -139,7 +139,7 @@ const app = express();
   // REMOVE USER
 
   app.get("/remove_user", async (req, res) => {
-    let users = await wrapTryCatch(sql.returnAllUsers, null, [])();
+    let users = await wrapTryCatch(sql.fetchUsers, null, [])();
 
     res.render("remove_user", { users });
   });
