@@ -256,7 +256,7 @@ The files you'll need to edit are inside the `db` folder:
 2. `helpers.js`: This file contains helper functions for database operations.
 3. `aggregates.js`: This file contains functions for aggregating data from the database.
 
-### Integrating SQL Queries
+### 🔌 Integrating SQL Queries
 
 In each of the files mentioned above, you'll find JavaScript functions where you need to insert your SQL queries. For example:
 
@@ -333,7 +333,7 @@ When implementing the required functions in `db/helpers.js`, ensure that your fu
   // .
   // .
 ];
-// ... more todos with user names
+// ... more users with their todos
 ```
 
 3.  `fetchTodoById(todoId)`:
@@ -525,7 +525,7 @@ npm run listen
 - Verify that the user and their todos disappear from the main page.
 - This tests the `removeUser` function in `db/helpers.js`.
 
-#### View Stats Dashboard:
+#### 📊 View Stats Dashboard:
 
 - Click on "View stats dashboard" to see aggregated data.
 - Check if the statistics match your expectations based on the current data.
