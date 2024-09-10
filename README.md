@@ -440,6 +440,16 @@ Note: this function can return a `min_todos` of `0` if there are no todos associ
 
 ## 🧪 Verifying your database functions
 
+### 🧵 Checking the json output from queries
+
+When writing queries with `sqlite3`, we can use `json` mode to format the query output as json instead of tables. In this mode, each row of the query output will be a JSON object. We can set this mode in `sqlite3` with the following command:
+
+```terminal
+.mode json
+```
+
+We can check some of our queries from part 1 return correctly formatted json before integrating them into our database functions. 
+
 ### 🔭 Logging output
 
 For some database functions, you can verify your queries are working correctly by checking the output inside the function. This works for functions that retrieve data or use an aggregate function to compute a value. For example, you can add a `console.log` statement to check the output is what you expect:
