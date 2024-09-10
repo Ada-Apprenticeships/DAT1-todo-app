@@ -9,16 +9,16 @@ class SQL {
     }
   }
 
-  returnAllUsers = async () => {
+  fetchUsers = async () => {
     const result = await this.db.all(
       `
-
+      
       `,
     );
     return result;
   };
 
-  returnTodoById = async (todoId) => {
+  fetchTodoById = async (todoId) => {
     const result = await this.db.get(
       `
 
@@ -36,7 +36,7 @@ class SQL {
     return result;
   };
 
-  returnUsersAndTodos = async () => {
+  fetchUsersAndTodos = async () => {
     const result = await this.db.all(
       `
 

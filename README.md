@@ -19,8 +19,6 @@ This README will guide you through the two-part assignment for the TODO List app
    - [🖥️ Using the user interface](#️🖥️-using-the-user-interface)
 1. [📝 Additional Notes](#-additional-notes)
 
-
-
 ## 📋 Assignment Overview
 
 This assignment is divided into two parts:
@@ -36,9 +34,9 @@ This assignment is divided into two parts:
    - Implement the queries in the appropriate JavaScript files
    - Test the integration using the Todo List UI
 
-##  ⚙️ Check your installation
+## ⚙️ Check your installation
 
-We recommend using a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) as your development environment for this project. If you create a Codespace using this repository it should automatically install all the applications and dependencies you need. However you should check that you have the correct software installed in your codespace before starting the assignment.
+We recommend using a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) as your development environment for this project. If you create a Codespace using this repository it should automatically install the core applications and dependencies you need to get started with this assignment. However you should check that you have the correct software installed in your codespace before starting the assignment.
 
 1. Check you have `sqlite3` installed in your project:
 
@@ -81,13 +79,6 @@ Create the following tables in your database. We have provided a file `setup.sql
 
 Write SQL queries for the following operations. We have provided a file `queries.sql` inside the `part-1` folder where you can write the queries for each operation. For each query, the expected output format is described.
 
-1. Retrieve `email_address`, `priority`, `title`, `content`, `is_complete` from the todos table
-
-- Output: A result set with columns:
-  ```
-  email_address | priority | title | content | is_complete
-  ```
-
 1. Retrieve all fields from the users table
 
 - Output: A result set with columns:
@@ -96,40 +87,33 @@ Write SQL queries for the following operations. We have provided a file `queries
      email_address | first_name | last_name | notification_ind
   ```
 
-1. Retrieve a todo by email
-
-   - Output: A single row result set with columns:
-     ```
-     id | title | content | priority | created_dt | is_complete
-     ```
-
-1. Retrieve a todo by id
-
-   - Output: A single row result set with columns:
-     ```
-     id | email_address | title | content | priority | created_dt | is_complete
-     ```
-
-1. Retrieve todos with user information
+2. Retrieve all users with their todos
 
 - Output: A result set with columns from the todos and the users table:
   ```
   first_name | last_name | email_address | content | title
   ```
 
-1. Insert a new user
+3. Retrieve a todo by id
+
+   - Output: A single row result set with columns:
+     ```
+     id | email_address | title | content | priority | created_dt | is_complete
+     ```
+
+4. Insert a new user
 
    - Output: No result set, but the user should be added to the `users` table
 
-1. Insert a new todo for a user
+5. Insert a new todo for a user
 
    - Output: No result set, but the todo should be added to the `todos` table
 
-1. Update a todo
+6. Update a todo
 
    - Output: No result set, but the specified todo should be updated in the `todos` table
 
-1. Remove a user and their todos
+7. Remove a user and their todos
 
    - Output: No result set, but the user and their associated todos should be removed from the database
 
@@ -187,14 +171,13 @@ Write SQL queries for the following operations. We have provided a file `queries
 
 When testing these queries, make sure the output matches the described format. This will ensure that the queries will integrate smoothly with the Todo List application in Part 2 of the assignment.
 
-
 ## 🔍 Checking your SQL queries
 
 `sqlite3` has a CLI (command line interface) which we can use to interact with our Sqlite databases. You can check your SQL queries by running your `.sql` files with the `sqlite3` CLI.
 
 | ℹ️ Double check you have `sqlite3` installed in your codespace. Open a terminal and run `sqlite3 --version` to check you get the sqlite3 version in the command output.
 
- To run any `.sql` file with `sqlite3`, you can:
+To run any `.sql` file with `sqlite3`, you can:
 
 1. Change into the directory where the file is located.
 1. Double check your `.sql` file opens a database using the `.open` statement.
@@ -208,18 +191,18 @@ For example, to run the file `setup.sql` located in `part-1`. You can:
 
 1. Change directory into the `part-1` directory
 1. Open a terminal and run the following command:
-  ```terminal
-    sqlite3 < setup.sql
-  ```
+
+```terminal
+  sqlite3 < setup.sql
+```
+
 1. Check the query output when you run the command
 
 ## 🖼️ Part 2: Integration with the Todo list UI
 
-In this project, we're building a Todo list UI that enables users to view a list of their todos. Through the UI, users can add more todos, edit existing ones, sign up new users and view a stats page that shows information like the total number of todos per each user. In this part, you will integrate the SQL queries you developed in Part 1 into the Todo List application so the frontend can communicate with the database.
-
+In this project, we're building a Todo list UI that enables users to view a list of their todos. Through the UI, users can add more todos, edit existing ones, sign up new users and view a stats page that shows information like the total number of todos per user. In this part, you will integrate the SQL queries you developed in Part 1 into the Todo List application so the frontend can communicate with the database.
 
 ### 📦 Install the project dependencies
-
 
 You will need to install some libraries for your todo app project to work. Start by opening a terminal and then run the following command to install your dependencies:
 
@@ -278,7 +261,7 @@ The files you'll need to edit are inside the `db` folder:
 In each of the files mentioned above, you'll find JavaScript functions where you need to insert your SQL queries. For example:
 
 ```javascript
-returnAllUsers = async () => {
+fetchUsers = async () => {
   const result = await this.db.all(
     `
 
@@ -316,7 +299,7 @@ This script will call the `createTables` function to create the tables in your d
 
 When implementing the required functions in `db/helpers.js`, ensure that your function outputs match the following criteria exactly:
 
-1.  `returnAllUsers()`:
+1.  `fetchUsers()`:
 
 - Returns an array of all user objects from the database
 
@@ -332,45 +315,9 @@ When implementing the required functions in `db/helpers.js`, ensure that your fu
 ];
 ```
 
+2.  `fetchUsersAndTodos()`:
 
-1.  `returnTodoById(todoId)`:
-
-    - Returns a single todo object matching the given ID:
-
-```json
-{
-  "id": 1,
-  "email_address": "user@example.com",
-  "priority": "H",
-  "title": "Todo title",
-  "content": "Todo content",
-  "created_at": null,
-  "is_complete": 0
-}
-```
-
-1.  `returnTodoByEmail(emailAddress)`:
-
-    - Returns an array of todo objects for the given email address:
-
-```js
-[
-  {
-    id: 1,
-    email_address: "user@example.com",
-    priority: "H",
-    title: "Todo title",
-    content: "Todo content",
-    created_at: null,
-    is_complete: 0,
-  },
-  // ... more todos for this email
-];
-```
-
-1.  `returnUsersAndTodos()`:
-
-    - Returns an array of objects, each representing a todo with its associated user:
+    - Returns an array of users objects, each representing a todo with its associated user:
 
 ```js
 [
@@ -389,19 +336,35 @@ When implementing the required functions in `db/helpers.js`, ensure that your fu
 // ... more todos with user names
 ```
 
-1.  `insertUser({ emailAddress, firstName, lastName, notificationInd })`:
+3.  `fetchTodoById(todoId)`:
+
+- Returns a single todo object matching the given ID:
+
+```json
+{
+  "id": 1,
+  "email_address": "user@example.com",
+  "priority": "H",
+  "title": "Todo title",
+  "content": "Todo content",
+  "created_at": null,
+  "is_complete": 0
+}
+```
+
+4.  `insertUser({ emailAddress, firstName, lastName, notificationInd })`:
 
     - Inserts a new user into the database.
 
-1.  `insertTodo({ emailAddress, title, content, priority })`:
+5.  `insertTodo({ emailAddress, title, content, priority })`:
 
     - Inserts a new todo into the database.
 
-1.  `updateTodo({ title, content, priority, todoId, isComplete })`:
+6.  `updateTodo({ title, content, priority, todoId, isComplete })`:
 
     - Updates an existing todo in the database.
 
-1.  `removeUser(emailAddress)`:
+7.  `removeUser(emailAddress)`:
     - Removes a user and their associated todos from the database.
     - Returns the result of the database operation (implementation-specific).
 
@@ -413,11 +376,11 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 
    - Returns a single integer representing the total number of users.
 
-1. `totalTodos()`:
+2. `totalTodos()`:
 
    - Returns a single integer representing the total number of todos.
 
-1. `todosPerUser()`:
+3. `todosPerUser()`:
 
    - Returns an array of objects, each with the following structure:
 
@@ -425,7 +388,7 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 { "email": "user@example.com", "total_todos": 5 }
 ```
 
-1. `todosPerPriority()`:
+4. `todosPerPriority()`:
 
    - Returns an array of objects, each with the following structure:
 
@@ -442,7 +405,7 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 ];
 ```
 
-1. `emailOfMaxTodos()`:
+5. `emailOfMaxTodos()`:
 
    - Gives the first user email with the maximum number of todos. Returns a single object with the following structure:
 
@@ -453,7 +416,7 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 }
 ```
 
-1. `emailOfMinTodos()`:
+6. `emailOfMinTodos()`:
    - Gives the first user email with the minimum number of todos. Returns a single object with the following structure:
 
 ```json
@@ -463,7 +426,7 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 }
 ```
 
-1. `avgTodosPerUser()`
+7. `avgTodosPerUser()`
 
 - Gives the average number of todos per user. Returns a single object with the following structure:
 
@@ -481,19 +444,17 @@ Note: this function can return a `min_todos` of `0` if there are no todos associ
 
 For some database functions, you can verify your queries are working correctly by checking the output inside the function. This works for functions that retrieve data or use an aggregate function to compute a value. For example, you can add a `console.log` statement to check the output is what you expect:
 
-
 ```javascript
-returnAllUsers = async () => {
+fetchUsers = async () => {
   const result = await this.db.all(
     `
 
    `,
   );
-  console.log(result,'<----result');
+  console.log(result, "<----result");
   return result;
 };
 ```
-
 
 ### 🖥️ Using the user interface
 
@@ -505,7 +466,7 @@ To ensure your query implementations in `setup.js`,`helpers.js` and `aggregates.
 npm run setup:db
 ```
 
-1. Start the todo application frontend:
+2. Start the todo application frontend:
 
 ```terminal
 
@@ -513,29 +474,31 @@ npm run listen
 
 ```
 
-1. Open your web browser and navigate to `http://localhost:3000`
+3. Open your web browser and navigate to `http://localhost:3000`
 
-1. Use the following UI features to test your implementations:
-
+4. Use the following UI features to test your implementations:
 
 #### Return all users:
 
 - Navigate to the home page on localhost:3000
 - Check the **All usernames** section of the UI
 - Check it displays the usernames of all users in your database
-- This checks that `returnAllUsers` in `db/helpers.js` is working
+- This checks that `fetchUsers` in `db/helpers.js` is working
 
 #### Return todos and users:
 
 - Navigate to the home page on localhost:3000
 - Check the **All user todo lists:** section of theUI
 - It should display all the users and a list of their todos
-- This checks that `returnAllUsers` in `db/helpers.js` is working
+- This checks that `fetchUsersAndTodos` in `db/helpers.js` is working
 
 #### Return todo by ID:
 
-
-
+- Navigate to the home page
+- Check you can view the list of todos for each user
+- Click on the pencil icon to edit the a todo
+- It should navigate to a form with auto-populated fields for the chosen todo you want to edit
+- This checks that `fetchTodoById` is working correctly
 
 #### User Signup:
 
@@ -571,9 +534,6 @@ npm run listen
 1. After each operation, you can use the sqlite3 command-line tool (as described in the "Checking Database State with sqlite3" section) to directly verify the database state.
 
 1. If you notice any discrepancies between the UI, the database state, and your expected results, review and debug your query implementations.
-
-
-
 
 Remember to test edge cases, such as:
 
