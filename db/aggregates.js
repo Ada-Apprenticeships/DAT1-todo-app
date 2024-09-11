@@ -36,7 +36,7 @@ class Aggregates {
     return result;
   };
 
-  async todosPerPriority() {
+  todosPerPriority = async() => {
     const result = await this.db.all(
       `
 
@@ -45,7 +45,7 @@ class Aggregates {
     return result;
   }
 
-  async emailOfMaxTodos() {
+  emailOfMaxTodos = async() => {
     const result = await this.db.get(
       `
 
@@ -54,7 +54,7 @@ class Aggregates {
     return result;
   }
 
-  async emailOfMinTodos() {
+  emailOfMinTodos = async()  => {
     const result = await this.db.get(
       `
 
@@ -63,7 +63,7 @@ class Aggregates {
     return result;
   }
 
-  async avgTodosPerUser() {
+  avgTodosPerUser = async() => {
     const result = await this.db.get(
       `
 
