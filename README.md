@@ -75,6 +75,9 @@ Create the following tables in your database. We have provided a file `setup.sql
 - `created_at`: TIMESTAMP
 - `is_complete`: INTEGER (0 or 1)
 
+
+Once you've created your tables, you'll need to insert some users and todos into your database to check that your tables are defined correctly.
+
 ### Required SQL Queries
 
 Write SQL queries for the following operations. We have provided a file `queries.sql` inside the `part-1` folder where you can write the queries for each operation. For each query, the expected output format is described.
