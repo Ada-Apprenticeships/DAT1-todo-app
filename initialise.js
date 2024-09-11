@@ -62,8 +62,7 @@ const { createTables, removeTables, insertData } = require("./db/setup.js");
       todos,
       users,
     });
-    await insertData(db, { todos, users });
-    console.log("successfully created tables and inserted data...");
+    await insertData(db);
   } catch (error) {
     console.log(`an error occurred whilst setting up the database...`);
     console.log(error.message);

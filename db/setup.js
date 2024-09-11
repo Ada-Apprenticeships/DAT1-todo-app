@@ -1,44 +1,26 @@
-const { buildInsertString } = require("../lib/helpers.js");
 
-async function insertData(db, { todos, users }) {
-  const [userFields, userValues] = buildInsertString(users);
-  const [todoFields, todoValues] = buildInsertString(todos);
-  
-  try {
-    await db.exec(
-      `
-      INSERT INTO users ${userFields} VALUES ${userValues};
-        `,
-    );
-  } catch (error) {
-    throw new Error(`error inserting the users...${error.message}`)
-   
-  }
 
-  try {
-    await db.exec(
-      `
-      INSERT INTO todos ${todoFields} VALUES ${todoValues};
-        `,
-    );
-  } catch (error) {
-    throw new Error(`error inserting the users...${error.message}`)
-   
-
-  }
-}
-
-async function createTables(db, { todos, users }) {
+async function createTables(db) {
 
   // define your tables in here...
   await db.exec(
     `
-    
     `,
   );
  
 }
 
+async function insertData(db) {
+
+  // insert your data here...
+  await db.exec(
+    `
+    `,
+  );
+
+}
+
+// leave this function as it is...
 async function removeTables(db) {
   const rawDb = db.getDatabaseInstance();
   await rawDb.serialize();

@@ -75,6 +75,9 @@ Create the following tables in your database. We have provided a file `setup.sql
 - `created_at`: TIMESTAMP
 - `is_complete`: INTEGER (0 or 1)
 
+
+Once you've created your tables, you'll need to insert some users and todos into your database to check that your tables are defined correctly.
+
 ### Required SQL Queries
 
 Write SQL queries for the following operations. We have provided a file `queries.sql` inside the `part-1` folder where you can write the queries for each operation. For each query, the expected output format is described.
@@ -287,13 +290,13 @@ To reset the database to its initial state, use the following script:
 
 ### `db/setup.js`
 
-Your first task will be to create the tables `users` and `todos` for the todo application. You will need to edit the `createTables` function located in the `setup.js` file in the `db` directory. You can check this is working by running:
+Your first task will be to create the tables `users` and `todos` for the todo application. You will need to edit the `createTables` and `insertData` functions located in the `setup.js` file in the `db` directory. You can check this is working by running:
 
 ```terminal
   npm run setup:db
 ```
 
-This script will call the `createTables` function to create the tables in your development database and insert some sample data in to it.
+This script will call the `createTables` and `insertData` functions from `initialise.js` to setup your development database.
 
 ### `db/helpers.js`
 
