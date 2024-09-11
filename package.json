@@ -4,7 +4,7 @@
   "description": "The purpose of this exercise is to test your knowledge of SQL and your ability to use it with your programming language.",
   "main": "index.js",
   "scripts": {
-    "init:db" : "node initialise.js",
+    "init:db": "node initialise.js",
     "teardown:db": "rm todo.sqlite",
     "setup:db": "npm run teardown:db; npm run init:db",
     "listen": "nodemon listen.js"
@@ -24,7 +24,6 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
     "nodemon": "^3.1.4"
   }
 }
