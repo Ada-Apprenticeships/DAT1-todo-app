@@ -230,7 +230,6 @@ nodejs@1.0.0 /workspaces/DAT1-todo-app
 ├── express-handlebars@6.0.7
 ├── express-session@1.18.0
 ├── express@4.19.2
-├── jest@29.7.0
 ├── node-fetch@3.3.2
 ├── nodemon@3.1.4
 ├── prettier@3.3.3
