@@ -287,13 +287,13 @@ To reset the database to its initial state, use the following script:
 
 ### `db/setup.js`
 
-Your first task will be to create the tables `users` and `todos` for the todo application. You will need to edit the `createTables` function located in the `setup.js` file in the `db` directory. You can check this is working by running:
+Your first task will be to create the tables `users` and `todos` for the todo application. You will need to edit the `createTables` and `insertData` functions located in the `setup.js` file in the `db` directory. You can check this is working by running:
 
 ```terminal
   npm run setup:db
 ```
 
-This script will call the `createTables` function to create the tables in your development database and insert some sample data in to it.
+This script will call the `createTables` and `insertData` functions from `initialise.js` to setup your development database.
 
 ### `db/helpers.js`
 
