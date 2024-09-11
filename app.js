@@ -166,13 +166,13 @@ const app = express();
       emailOfMinTodos,
       avgTodosPerUser,
     ] = await Promise.all([
-      wrapTryCatch(aggs.totalUsers, { total_users: "undefined" })(),
-      wrapTryCatch(aggs.totalTodos, { total_todos: "undefined" })(),
-      wrapTryCatch(aggs.todosPerUser(), [])(),
-      wrapTryCatch(aggs.todosPerPriority, [])(),
-      wrapTryCatch(aggs.emailOfMaxTodos, { email_address: "undefined" })(),
-      wrapTryCatch(aggs.emailOfMinTodos, { email_address: "undefined" })(),
-      wrapTryCatch(aggs.avgTodosPerUser, { avg_todos_per_user: "undefined" })(),
+      wrapTryCatch(aggs.totalUsers, null,{ total_users: "undefined" })(),
+      wrapTryCatch(aggs.totalTodos,null, { total_todos: "undefined" })(),
+      wrapTryCatch(aggs.todosPerUser,null, [])(),
+      wrapTryCatch(aggs.todosPerPriority,null, [])(),
+      wrapTryCatch(aggs.emailOfMaxTodos, null,{ email_address: "undefined" })(),
+      wrapTryCatch(aggs.emailOfMinTodos, null,{ email_address: "undefined" })(),
+      wrapTryCatch(aggs.avgTodosPerUser,null, { avg_todos_per_user: "undefined" })(),
     ]);
 
     todosPerUser = todosPerUser.reduce((acc, { total_todos, email_address }) => {
