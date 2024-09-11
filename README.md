@@ -44,7 +44,7 @@ We recommend using a [GitHub Codespace](https://docs.github.com/en/codespaces/ov
 sqlite3 --version
 ```
 
-1. Check you have node installed in your project:
+2. Check you have node installed in your project:
 
 ```terminal
 node -v
@@ -122,6 +122,8 @@ Write SQL queries for the following operations. We have provided a file `queries
 
 ### Required aggregate queries
 
+For queries using aggregate functions (like SUM, COUNT, AVG, etc.), you should provide an **alias** for the column that contains the aggregate result.
+
 1. Count the total number of users
 
    - Output: A single row, single column result set:
@@ -169,7 +171,7 @@ Write SQL queries for the following operations. We have provided a file `queries
 1. Calculate the average number of todos per user
    - Output: A single row, single column result set:
      ```
-     average_todos
+     avg_todos_per_user
      ```
 
 When testing these queries, make sure the output matches the described format. This will ensure that the queries will integrate smoothly with the Todo List application in Part 2 of the assignment.
@@ -377,23 +379,32 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 
 1. `totalUsers()`:
 
-   - Returns a single integer representing the total number of users.
+- Gives the total number of users. Returns a single object with the following structure:
+   
+```json
+
+{"total_users": 3}
+```
 
 2. `totalTodos()`:
 
-   - Returns a single integer representing the total number of todos.
+- Gives the total number of todos. Returns a single object with the following structure:
+
+```json
+{"total_todos": 6}
+```
 
 3. `todosPerUser()`:
 
-   - Returns an array of objects, each with the following structure:
+- Returns an array of objects, each with the following structure:
 
 ```json
-{ "email": "user@example.com", "total_todos": 5 }
+{ "email_address": "user@example.com", "total_todos": 5 }
 ```
 
 4. `todosPerPriority()`:
 
-   - Returns an array of objects, each with the following structure:
+- Returns an array of objects, each with the following structure:
 
 ```js
 [
@@ -410,21 +421,22 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 
 5. `emailOfMaxTodos()`:
 
-   - Gives the first user email with the maximum number of todos. Returns a single object with the following structure:
+- Gives the first user email with the maximum number of todos. Returns a single object with the following structure:
 
 ```json
 {
-  "email": "user@example.com",
+  "email_address": "user@example.com",
   "max_todos": 10
 }
 ```
 
 6. `emailOfMinTodos()`:
-   - Gives the first user email with the minimum number of todos. Returns a single object with the following structure:
+
+- Gives the first user email with the minimum number of todos. Returns a single object with the following structure:
 
 ```json
 {
-  "email": "user@example.com",
+  "email_address": "user@example.com",
   "min_todos": 2
 }
 ```
@@ -491,21 +503,21 @@ npm run listen
 
 4. Use the following UI features to test your implementations:
 
-#### Return all users:
+#### Return all users
 
 - Navigate to the home page on localhost:3000
 - Check the **All usernames** section of the UI
 - Check it displays the usernames of all users in your database
 - This checks that `fetchUsers` in `db/helpers.js` is working
 
-#### Return todos and users:
+#### Return todos and users
 
 - Navigate to the home page on localhost:3000
 - Check the **All user todo lists:** section of theUI
 - It should display all the users and a list of their todos
 - This checks that `fetchUsersAndTodos` in `db/helpers.js` is working
 
-#### Return todo by ID:
+#### Return todo by ID
 
 - Navigate to the home page
 - Check you can view the list of todos for each user
@@ -513,19 +525,19 @@ npm run listen
 - It should navigate to a form with auto-populated fields for the chosen todo you want to edit
 - This checks that `fetchTodoById` is working correctly
 
-#### User Signup:
+#### User Signup
 
 - Click on "User Signup" and fill out the form with a new user's details.
 - After submission, check if the new user appears on the main page with an empty todo list.
 - This tests the `insertUser` function in `db/helpers.js`.
 
-#### Add Todo:
+#### Add Todo
 
 - Click on "Add Todo" and create a new todo for an existing user.
 - Verify that the new todo appears in the user's list on the main page.
 - This tests the `insertTodo` function in `db/helpers.js`.
 
-#### Edit Todo:
+#### Edit Todo
 
 - Click the edit icon (pencil) next to an existing todo.
 - Modify the todo and save the changes.
@@ -538,14 +550,13 @@ npm run listen
 - Verify that the user and their todos disappear from the main page.
 - This tests the `removeUser` function in `db/helpers.js`.
 
-#### 📊 View Stats Dashboard:
+#### 📊 View Stats Dashboard
 
 - Click on "View stats dashboard" to see aggregated data.
 - Check if the statistics match your expectations based on the current data.
 - This tests various functions in `aggregates.js`, including `totalUsers`, `totalTodos`, `todosPerUser`, and `todosPerPriority`.
 
 1. After each operation, you can use the sqlite3 command-line tool (as described in the "Checking Database State with sqlite3" section) to directly verify the database state.
-
 1. If you notice any discrepancies between the UI, the database state, and your expected results, review and debug your query implementations.
 
 Remember to test edge cases, such as:

@@ -175,8 +175,8 @@ const app = express();
       wrapTryCatch(aggs.avgTodosPerUser, { avg_todos_per_user: "undefined" })(),
     ]);
 
-    todosPerUser = todosPerUser.reduce((acc, { total_todos, email }) => {
-      acc[email] = total_todos;
+    todosPerUser = todosPerUser.reduce((acc, { total_todos, email_address }) => {
+      acc[email_address] = total_todos;
       return acc;
     }, {});
 
