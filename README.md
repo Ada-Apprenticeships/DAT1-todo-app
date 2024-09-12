@@ -275,6 +275,8 @@ fetchUsers = async () => {
 };
 ```
 
+For some of the examples, the functions you will need to change depending on the nature of the query. You can discover how to update these functions using examples from the docs here: https://www.npmjs.com/package/sqlite
+
 Insert your SQL queries in between the backticks to complete this function.
 
 ## 🔄 Resetting the Database
