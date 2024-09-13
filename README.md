@@ -275,7 +275,11 @@ fetchUsers = async () => {
 };
 ```
 
-Insert your SQL queries in between the backticks to complete this function.
+### 📁 Using the documentation
+
+For this assignment, you will need to consult documentation to figure out how to integrate the SQL queries into some of your functions. 
+
+Check this documentation: https://www.npmjs.com/package/sqlite for examples on how to integrate your SQL queries into this application.
 
 ## 🔄 Resetting the Database
 
@@ -356,17 +360,25 @@ When implementing the required functions in `db/helpers.js`, ensure that your fu
 }
 ```
 
+> 🔍 For this function, you need to check the [documentation](https://www.npmjs.com/package/sqlite#getting-a-single-row) to fetch single rows.
+
 4.  `insertUser({ emailAddress, firstName, lastName, notificationInd })`:
 
     - Inserts a new user into the database.
+
+> 🔍 For this function, you need to check the [documentation](https://www.npmjs.com/package/sqlite#inserting-rows) to insert rows.
 
 5.  `insertTodo({ emailAddress, title, content, priority })`:
 
     - Inserts a new todo into the database.
 
+
+
 6.  `updateTodo({ title, content, priority, todoId, isComplete })`:
 
     - Updates an existing todo in the database.
+
+> 🔍 For this function, you need to check the [documentation](https://www.npmjs.com/package/sqlite#updating-rows) to update rows.
 
 7.  `removeUser(emailAddress)`:
     - Removes a user and their associated todos from the database.
@@ -395,15 +407,18 @@ When implementing the required queries in `aggregates.js`, ensure that your func
 
 3. `todosPerUser()`:
 
-- Returns an array of objects, each with the following structure:
+- Returns an array of objects, with the following form:
 
 ```json
-{ "email_address": "user@example.com", "total_todos": 5 }
+[
+  { "email_address": "user@example.com", "total_todos": 5 },
+  // ... more objects with a similar structure
+]
 ```
 
 4. `todosPerPriority()`:
 
-- Returns an array of objects, each with the following structure:
+- Returns an array of objects, with the following form:
 
 ```js
 [
@@ -479,6 +494,8 @@ fetchUsers = async () => {
   return result;
 };
 ```
+
+You need to use [some documentation](https://www.npmjs.com/package/sqlite) to figure out how to update these functions depending on the query.
 
 ### 🖥️ Using the user interface
 
