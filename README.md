@@ -94,7 +94,7 @@ Write SQL queries for the following operations. We have provided a file `queries
 
 - Output: A result set with columns from the todos and the users table:
   ```
-  first_name | last_name | email_address | content | title
+  first_name | last_name | email_address | id | content | title
   ```
 
 3. Retrieve a todo by id
@@ -187,6 +187,7 @@ To run any `.sql` file with `sqlite3`, you can:
 1. Change into the directory where the file is located.
 2. Double check your `.sql` file opens a database using the `.open` statement.
 3. Open a terminal and use the `sqlite3` command-line tool:
+
    ```terminal
    sqlite3 < <name-of-file>.sql
    ```
@@ -235,7 +236,6 @@ nodejs@1.0.0 /workspaces/DAT1-todo-app
 ├── prettier@3.3.3
 ├── sqlite@4.2.1
 └── sqlite3@5.1.7
-
 ```
 
 ### Viewing the Todo List UI
